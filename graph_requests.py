@@ -4,6 +4,9 @@
 import requests
 import json
 
+
+# replace things like {app_id} with the string of the id
+# so {app_id} would be application_id string
 get_token = requests.post('https://login.microsoftonline.com/{app_id}/oauth2/token', data = {'grant_type':'client_credentials','client_id':'{client_id}','client_secret':'{client_secret}','resource':'https://graph.microsoft.com'})
 get_token_reply = get_token.json()
 access_token = (get_token_reply['access_token'])
