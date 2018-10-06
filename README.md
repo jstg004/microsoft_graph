@@ -5,7 +5,7 @@
 ## code
 
 ### graph_requests.py
-- Hits graph with a POST request
+- Hits Graph with a POST request
   - Graph returns a token
 - That token is used in a GET request to Graph
   - Graph returns the requested data
