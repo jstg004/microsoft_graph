@@ -25,3 +25,6 @@
   Microsoft Azure App Services.
 - You can change the Graph API calls to access different sections of Sharepoint
   or OneDrive or other Office 365 services, depending on what access you grant.
+- This app will search through the 1st level of files and 1 subfolder deep.
+  - This code can be improved/consolidated and could also go into deeper levels
+    of sub folders, I will improve upon this code to do so.

@@ -16,6 +16,12 @@ graph_url_end = '/root/children'
 app = Flask(__name__)
 
 
+'''
+This service is access by going to the domain name followed by this:
+    :8080/folder/?drive_id=
+Then adding the ID of the drive in Sharepoint you want to search at the end
+    of that string/URL.
+'''
 @app.route('/folder/', methods = ['GET'])
 def folder(child = None):
     # The 'drive_id' is the ID of the main folder in which the data is located.
