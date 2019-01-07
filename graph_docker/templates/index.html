@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+{% block head %}
+<head>
+    {% block title %}SharePoint File View{% endblock %}
+</head>
+{% endblock %}
+
+{% block content %}
+
+<span class='titles'>Folders</span>
+  <li>
+    {% for key, value in subfolder_dict.items() %}
+    <li>
+        <label for={{ key }}>{{ key }}</label>
+        <table style="width: 90%">
+        {% for file in value %}
+            <tr>
+                <td>{{ file }}</td>
+                <td>Modified: {{ value[file][0] }}</td>
+                <td>{{ value[file][1] }}</td>
+                <td>
+                    <a href="{{ value[file][2] }}">Download</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    </li>
+    {% endfor %}
+  </li>
+
+<span class='titles'>Files</span>
+<table style="width: 90%">
+    {% for key, value in filename_dict.items() %}
+        <tr>
+            <td>{{ file }}</td>
+            <td>Modified: {{ value[file][0] }}</td>
+            <td>{{ value[file][1] }}</td>
+            <td>
+                <a href="{{ value[file][2] }}">Download</a>
+            </td>
+        </tr>
+    {% endfor %}<br />
+</table>
+
+{% endblock %}
+
+</html>

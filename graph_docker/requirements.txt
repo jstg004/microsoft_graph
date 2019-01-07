@@ -1,0 +1,6 @@
+Flask
+requests
+humanfriendly
+requests
+uwsgi
+maya

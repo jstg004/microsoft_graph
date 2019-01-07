@@ -5,6 +5,7 @@
 ## code
 
 ### graph_requests.py
+
 - Hits Graph with a POST request
   - Graph returns a token
 - That token is used in a GET request to Graph
@@ -15,3 +16,12 @@
   - This allows for the data to be automatically requested and received
     then displayed to users without any intervention from the user, such as
     having to log into Microsoft.
+
+### graph_docker
+
+- Creates a Docker container that can be hosted on services like AWS ECS running
+  on Fargate.
+- This app will access the Microsoft Graph API via an API key you assign through
+  Microsoft Azure App Services.
+- You can change the Graph API calls to access different sections of Sharepoint
+  or OneDrive or other Office 365 services, depending on what access you grant.
