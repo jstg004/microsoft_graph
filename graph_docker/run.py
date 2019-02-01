@@ -1,9 +1,11 @@
 import json, humanfriendly, requests, maya
+
 from flask import Flask, render_template, request, session
 
+
 # These variables can be stored in a config file or elsewhere in a secure manor:
-token_url = 'MICROSOFT API TOKEN'
-client_id = 'MICROSOFT API CLIENT ID'
+token_url     = 'MICROSOFT API TOKEN'
+client_id     = 'MICROSOFT API CLIENT ID'
 client_secret = 'MICROSOFT API CLIENT SECRET'
 
 # Insert the unique ID of the SharePoint group you want into the URL below:
@@ -29,17 +31,17 @@ def folder(child = None):
 
     # GET token from Microsoft Graph API:
     get_token = requests.post(
-        token_url,
-        data = {
-            'grant_type': 'client_credentials',
-            'client_id': client_id,
-            'client_secret': client_secret,
-            'resource': 'https://graph.microsoft.com'
-            }
-        )
+                    token_url,
+                    data = {
+                            'grant_type'   : 'client_credentials',
+                            'client_id'    :  client_id,
+                            'client_secret':  client_secret,
+                            'resource'     : 'https://graph.microsoft.com'
+                        }
+                    )
 
     # Store the received token from Microsoft Graph API in a variable:
-    graph_token = get_token.json()
+    graph_token  = get_token.json()
     access_token = (graph_token['access_token'])
 
     # Form the URL used to query the Microsoft Graph API needed to GET the
@@ -48,7 +50,7 @@ def folder(child = None):
 
     # Use the received token from Microsoft Graph API to gain access to
     # the SharePoint folder data:
-    headers = {'Authorization': 'Bearer ' + access_token}
+    headers     = {'Authorization': 'Bearer ' + access_token}
     graph_reply = requests.get(graph_url, headers = headers)
 
     # Stores the response data from Microsoft Graph API in json format:
@@ -61,7 +63,7 @@ def folder(child = None):
     # Initialize the dictionaries that will be used to store received
     # SharePoint data:
     subfolder_dict = {}
-    filename_dict = {}
+    filename_dict  = {}
 
     # Extract the data needed from the Microsoft Graph API json response:
     for item in json_value:
@@ -69,7 +71,7 @@ def folder(child = None):
         Initializes a list and a dictionary, which resets every iteration
         of the for loop, to store the extracted json data:
         '''
-        file_list = []
+        file_list        = []
         subfilename_dict = {}
 
         if '@microsoft.graph.downloadUrl' in item:
@@ -104,10 +106,10 @@ def folder(child = None):
             graph_sub_url = graph_url_pre + drive_id + '/items/' + \
                             item['id'] + '/children'
 
-            graph_sub_reply = requests.get(graph_sub_url, headers = headers)
+            graph_sub_reply   = requests.get(graph_sub_url, headers = headers)
             subfolder_details = graph_sub_reply.json()
-            subraw_json = subfolder_details
-            subjson_value = subraw_json['value']
+            subraw_json       = subfolder_details
+            subjson_value     = subraw_json['value']
 
             # Extracts the data from within the folder:
             for subitem in subjson_value:
