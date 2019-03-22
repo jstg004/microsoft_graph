@@ -4,6 +4,12 @@
 
 ## code
 
+### filter_requests.py
+
+- Working on different ways to query the Microsoft Graph API and use the data.
+- This is just the beginning of some testing.
+- This file is part of a Flask app.
+
 ### graph_requests.py
 
 - Hits Graph with a POST request
