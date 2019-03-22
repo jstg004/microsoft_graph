@@ -40,7 +40,7 @@ def find_files():
     file_dict = {}
 
     # Parses the returned json from the API call:
-    for item in json_value:
+    for item in graph_data_json_value:
         find_list = [] # Creates an empty list to store data for each file
 
         # Pulls the metadata from each file found from the API call:
