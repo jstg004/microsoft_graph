@@ -1,5 +1,5 @@
 '''
-Wokring on different way to query the Microsoft Graph API and use the data.
+Wokring on different ways to query the Microsoft Graph API and use the data.
 '''
 
 
@@ -23,11 +23,11 @@ def find_files():
     uas       = request.user_agent.string
 
     # Grabs the choice desired from the URL argument:
-    comm_choice = request.args.get('comm') # /?comm=search_variable
+    choice = request.args.get('search_variable')
 
     # Formats the string fro the API query and builds the URL for the API query:
-    comm_choice_str  =  "'" + comm_choice + "'"
-    url              =  website_library + comm_choice_str
+    choice_str  =  "'" + choice + "'"
+    url              =  website_library + choice_str
 
     # Builds and makes the Microsoft Graph API call:
     access_token           =   graph_token(client_id, client_secret)
